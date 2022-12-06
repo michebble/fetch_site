@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require "open-uri"
+
+urls = ARGV
+
+urls.each do |url|
+  uri = URI.parse(url)
+  file = uri.open
+  File.open("#{uri.host}.html", "w") do |output|
+    File.foreach(file) { |line| output.write(line) }
+  end
+end
