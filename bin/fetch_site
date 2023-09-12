@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "open-uri"
+require_relative "../lib/url_fetcher"
 
 urls = ARGV
 
@@ -8,19 +8,6 @@ if urls.empty?
 end
 
 urls.each do |url|
-  uri = URI.parse(url)
-  if uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
-    begin
-      file = uri.open
-      File.open("#{uri.host}.html", "w") do |output|
-        File.foreach(file) { |line| output.write(line) }
-      end
-    rescue SocketError => e
-      puts "Unable to connect to #{url}"
-      puts "Check url is correct and try again"
-      puts e.inspect
-    end
-  else
-    puts "#{url} is not a valid url"
-  end
+  result = UrlFetcher.new(url:).process
+  puts result
 end

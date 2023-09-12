@@ -7,7 +7,7 @@ To use, first build the docker image.
 docker build -t fetch .
 ```
 
-Then run the following command and 'www.google.com.html` will be created in your current directory.
+Then run the following command and `www.google.com.html` will be created in your current directory.
 ```
 docker run --rm -v ${PWD}:/usr/src/app/ --net=host fetch https://www.google.com
 ```
