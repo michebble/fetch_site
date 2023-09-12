@@ -1,4 +1,5 @@
 FROM ruby:3.1.2-slim
+ENV BUNDLE_WITHOUT=test:development
 RUN apt update && apt install build-essential -y --no-install-recommends
 WORKDIR /usr/src/app/
 ADD . /usr/src/app/
