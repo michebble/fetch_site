@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../lib/app"
+require 'optparse'
+
+ARGV.push('-h') if ARGV.empty?
+
+app = App.new
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: bin/fetch [urls]"
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    exit
+  end
+end.parse!
+
+app.fetch_site(ARGV)
