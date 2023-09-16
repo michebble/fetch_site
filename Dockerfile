@@ -10,4 +10,4 @@ WORKDIR /usr/src/app/
 ADD . /usr/src/app/
 RUN bundle install \
   && chmod +x bin/fetch_site
-ENTRYPOINT ["bin/fetch_site"]
+ENTRYPOINT ["bin/fetch"]
